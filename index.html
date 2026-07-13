@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Goodwins Auto Salvage | S&S Vehicle Portal</title>
+<link rel="icon" type="image/png" href="favicon.png">
+
+<style>
+:root{
+  --red:#d60000;
+  --black:#050505;
+  --grey:#8c8c8c;
+  --light:#f2f2f2;
+}
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  color:#111;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0,0,0,.08), transparent 18%),
+    radial-gradient(circle at 80% 40%, rgba(0,0,0,.06), transparent 22%),
+    linear-gradient(135deg, rgba(0,0,0,.035) 25%, transparent 25%) 0 0/18px 18px,
+    #eeeeee;
+}
+
+.top-strip{
+  height:18px;
+  background:linear-gradient(90deg,#000 0%,#000 72%,#d60000 72%,#d60000 100%);
+  border-bottom:4px solid var(--red);
+}
+
+.wrapper{
+  max-width:1280px;
+  margin:0 auto;
+  padding:38px 30px 24px;
+}
+
+.header{
+  text-align:center;
+  position:relative;
+}
+
+.logo{
+  max-width:420px;
+  width:70%;
+  margin-bottom:-20px;
+}
+
+.title{
+  font-size:54px;
+  font-weight:800;
+  margin:0 0 8px;
+  letter-spacing:.5px;
+}
+  
+.title .ss{
+  color:var(--grey);
+  font-weight:900;
+}
+
+.title .portal{
+  color:#000;
+}
+
+.red-line{
+  width:180px;
+  height:3px;
+  background:var(--red);
+  margin:0 auto 18px;
+}
+
+.subtitle{
+  font-size:20px;
+  line-height:1.45;
+  margin:0 0 34px;
+}
+
+.subtitle strong{
+  color:var(--red);
+}
+
+.datetime{
+  position:absolute;
+  right:0;
+  top:20px;
+  background:white;
+  border-radius:12px;
+  padding:20px 26px;
+  min-width:230px;
+  box-shadow:0 8px 20px rgba(0,0,0,.35);
+  border:1px solid #ddd;
+  text-align:left;
+}
+
+.datetime .date{
+  font-weight:800;
+  font-size:18px;
+  margin-bottom:12px;
+}
+
+.datetime .time{
+  border-top:1px solid var(--red);
+  padding-top:12px;
+  font-weight:800;
+  font-size:18px;
+}
+
+.datetime span{
+  display:block;
+  font-weight:400;
+  font-size:15px;
+  margin-top:4px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+  margin-top:20px;
+}
+
+.card{
+  background:rgba(255,255,255,.96);
+  border:3px solid #000;
+  border-radius:16px;
+  padding:30px 24px;
+  text-align:center;
+  box-shadow:0 12px 26px rgba(0,0,0,.35);
+  transition:.2s ease;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+.icon{
+  width:86px;
+  height:86px;
+  border-radius:50%;
+  background:var(--red);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 18px;
+  font-size:42px;
+  box-shadow:0 6px 14px rgba(0,0,0,.35);
+}
+
+.card h2{
+  font-size:28px;
+  margin:8px 0 10px;
+}
+
+.small-line{
+  width:60px;
+  height:3px;
+  background:var(--red);
+  margin:0 auto 18px;
+}
+
+.card p{
+    font-size:17px;
+    line-height:1.45;
+    min-height:58px;
+    margin-bottom:24px;
+}
+
+.card a{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  width:100%;
+  padding:16px 18px;
+  border-radius:8px;
+  background:var(--red);
+  color:white;
+  text-decoration:none;
+  font-weight:800;
+  box-shadow:0 6px 14px rgba(0,0,0,.25);
+}
+
+.notice{
+  margin-top:40px;
+  background:rgba(255,255,255,.96);
+  border-radius:14px;
+  padding:26px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
+  box-shadow:0 10px 24px rgba(0,0,0,.3);
+}
+
+.notice-block{
+  border-right:1px solid #ccc;
+  padding-right:24px;
+}
+
+.notice-block:last-child{
+  border-right:none;
+}
+
+.notice h3{
+  margin:0 0 10px;
+  color:var(--red);
+  font-size:20px;
+}
+
+.notice p{
+  margin:6px 0;
+  line-height:1.4;
+  font-size:14px;
+}
+
+.footer{
+  margin-top:24px;
+  background:#050505;
+  color:white;
+  text-align:center;
+  padding:18px;
+  font-size:14px;
+  border-top:4px solid var(--red);
+}
+
+.footer span{
+  color:#aaa;
+  margin:0 18px;
+}
+
+@media(max-width:1050px){
+  .datetime{
+    position:static;
+    margin:0 auto 30px;
+    text-align:center;
+  }
+
+  .cards,
+  .notice{
+    grid-template-columns:1fr;
+  }
+
+  .notice-block{
+    border-right:none;
+    border-bottom:1px solid #ccc;
+    padding-bottom:18px;
+  }
+
+  .notice-block:last-child{
+    border-bottom:none;
+  }
+
+  .title{
+    font-size:40px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-strip"></div>
+
+<div class="wrapper">
+
+  <div class="header">
+    <img src="logo.png" alt="Goodwins Auto Salvage Logo" class="logo">
+
+    <div class="datetime">
+      <div class="date" id="date">Loading date...</div>
+      <div class="time" id="time">Loading time...<span>UK Time</span></div>
+    </div>
+
+    <div class="title">
+      <span class="ss">sopp+sopp</span>
+      <span class="portal">Vehicle Portal</span>
+    </div>
+
+    <div class="red-line"></div>
+
+    <p class="subtitle">
+      Welcome to the <strong>Goodwins Auto Salvage</strong> Vehicle Portal.<br>
+      Please choose an option below to continue.
+    </p>
+  </div>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="icon">📋</div>
+      <h2>View Vehicle List</h2>
+      <div class="small-line"></div>
+      <p>Search, browse and view all current vehicles.</p>
+      <a href="https://baserow-cayak-u75750.vm.elestio.app/public/grid/Bds_h92XUZISTZMPTiut3WWWMTwQQDcnSyVWYYTIGEI" target="_blank" rel="noopener" target="_blank" rel="noopener">OPEN VEHICLE LIST ↗</a>
+    </div>
+
+    <div class="card">
+      <div class="icon">📊</div>
+      <h2>Workflow Board</h2>
+      <div class="small-line"></div>
+      <p>View the current status and workflow of all vehicles.</p>
+      <a href="https://baserow-cayak-u75750.vm.elestio.app/public/kanban/lbCx3BlCSHO4jvWDfNb_uQaXfMgLamwxOtqvqO-qI-c" target="_blank" rel="noopener">OPEN WORKFLOW BOARD ↗</a>
+    </div>
+
+    <div class="card">
+      <div class="icon">➕</div>
+      <h2>Submit New Vehicle</h2>
+      <div class="small-line"></div>
+      <p>Complete this form to add a new vehicle.</p>
+      <a href="https://baserow-cayak-u75750.vm.elestio.app/form/22N3I8YQDuyPZpVEbWW9lxpBI-LQ3MNm2ga9uWjHkBM" target="_blank" rel="noopener">OPEN SUBMISSION FORM ↗</a>
+    </div>
+
+  </div>
+
+  <div class="notice">
+
+    <div class="notice-block">
+      <h3>Authorised Access Only</h3>
+      <p>This portal is for authorised S&S staff only.</p>
+      <p>Unauthorised access is prohibited.</p>
+      <p>All activity is monitored.</p>
+    </div>
+
+    <div class="notice-block">
+      <h3>Password Notice</h3>
+      <p>The password for the following links is updated regularly.</p>
+      <p>GAS will share this with S&S Management.</p>
+    </div>
+
+    <div class="notice-block">
+      <h3>Need Help?</h3>
+<p><strong>IT Support</strong><br>itsupport@goodwinsautosalvage.co.uk</p>
+<p><strong>Updates</strong><br>totalloss@goodwinsautosalvage.co.uk</p>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="footer">
+  Goodwins Auto Salvage Ltd
+  <span>|</span>
+  sopp+sopp Vehicle Portal
+  <span>|</span>
+  Pre-Prod v1.3
+  <span>|</span>
+  © 2026 All Rights Reserved
+</div>
+
+<script>
+function updateDateTime(){
+  const now = new Date();
+
+  document.getElementById("date").textContent =
+    now.toLocaleDateString("en-GB", {
+      weekday:"long",
+      day:"2-digit",
+      month:"long",
+      year:"numeric"
+    });
+
+  document.getElementById("time").innerHTML =
+    now.toLocaleTimeString("en-GB", {
+      hour:"2-digit",
+      minute:"2-digit",
+      second:"2-digit"
+    }) + "<span>UK Time</span>";
+}
+
+updateDateTime();
+setInterval(updateDateTime,1000);
+</script>
+
+</body>
+</html>
